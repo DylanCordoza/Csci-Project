@@ -36,6 +36,7 @@ class Queue {
         }
     }
     int get_size() const { return size; }
+    Room top() { return head->get_r(); }
     void pop();
     void push(Room new_room);
 };
