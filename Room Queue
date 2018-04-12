@@ -1,0 +1,72 @@
+//queue.h
+#pragma once
+#include <iostream>
+//#include <room.h>
+using namespace std;
+
+class Node {
+    Node *next = nullptr;
+    Node *prev = nullptr;
+    Room r; //Information for whichever room is being stored
+    public:
+    Node(Node *new_next = nullptr, Node *new_prev = nullptr; Room new_r) {
+        next = new_next;
+        prev = new_prev;
+        r = new_r;
+    }
+    void set_next(Node *new_next) { next = new_next; }
+    void set_prev(Node *new_prev) { prev = new_prev; }
+    void set_r(Room new_r) { r = new_r; }
+    Node *get_next() const { return next; }
+    Node *get_prev() const { return prev; }
+    Room get_r() const { return r; }
+};
+
+class Queue {
+    Node *head = nullptr;
+    Node *tail = nullptr;
+    int size = 0;
+    public:
+    List() {} //Default constructor
+    ~List() { //Destructor
+        while (head) {
+            Node *temp = head;
+            head = head->get_next();
+            delete temp;
+        }
+    }
+    int get_size() const { return size; }
+    void pop();
+    void push(Room new_room);
+};
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//queue.cc
+#include "queue.h"
+using namespace std;
+
+Queue::void pop() {
+    Node *temp = head;
+    if (size == 0) return;
+    else if (size == 1) {
+        head = nullptr;
+        tail = nullptr;
+        delete temp;
+    }
+    else {
+        head = temp->get_next();
+        head->set_prev(nullptr);
+        delete temp;
+    }
+    size--;
+    return;
+}
+
+Queue::void push(Room new_room) {
+    Node *bottom = new Node{nullptr, tail, new_room};
+    if (size == 0) head = bottom;
+    else tail->set_next(bottom);
+    tail = bottom;
+    size++;
+}
+
