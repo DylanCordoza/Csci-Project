@@ -1,0 +1,13 @@
+class Room{
+    private:
+        string r1, r2, r3, r4, r5, answer;
+        r1 = "I shine bright,\nThrough the cone over my light.\nOn your nightstand,\nI stand.\nWhat am I?\n";
+        r2 = "I give sight to those that cannot see,\nAnd on their face is where I like to be.\nWhat am I?\n";
+        r3 = "I have panels like windows, through which you can see stories\nOf heroes and gods; past and present glories.\nWhat am I?\n";
+        r4 = "My whispers touch all 5 senses.\nWhen I am near, a tremor commences.\nThat is, if I am good and the vessel is empty.\nIf it is full or displeased, then I am not so healthy.\nWhat am I?";
+        r5 =
+    public:
+        string riddle(int level){
+
+        }
+};
