@@ -1,28 +1,37 @@
-class Room{
+class Tower{
     private:
-        string r1, r2, r3, r4, r5, answer;
+        string r1, r2, r3, r4, r5, answer1, answer2;
         r1 = "I shine bright,\nThrough the cone over my light.\nOn your nightstand,\nI stand.\nWhat am I?\n";
         r2 = "I give sight to those that cannot see,\nAnd on their face is where I like to be.\nWhat am I?\n";
         r3 = "I have panels like windows, through which you can see stories\nOf heroes and gods; past and present glories.\nWhat am I?\n";
         r4 = "My whispers touch all 5 senses.\nWhen I am near, a tremor commences.\nThat is, if I am good and the vessel is empty.\nIf it is full or displeased, then I am not so healthy.\nWhat am I?";
-        r5 =
+        r5 = "I hold many keys, but I am not a ring.\nA combination of them can unlock the world.\nWhat am I?\n";
     public:
         string riddle(int level){
             if(level == 1){
                 cout << r1;
+                answer1 = "LAMP";
+                answer2 = "A LAMP";
             }
             else if(level == 2){
                 cout << r2;
+                answer1 = "GLASSES";
+                answer2 = answer1;
             }
             else if(level == 3){
                 cout << r3;
+                answer1 = "COMIC BOOK";
+                answer2 = "COMICS";
             }
             else if(level == 4){
                 cout << r4;
+                answer1 = "FOOD";
+                answer2 = answer1;
             }
             else if(level == 5){
                 cout << r5;
+                answer1 = "KEYBOARD";
+                answer2 = answer1;
             }
         }
 };
-
