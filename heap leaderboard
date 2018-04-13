@@ -1,9 +1,27 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <ifstream>
-#include <ofstream>
+#include <fstream>
 using namespace std;
-void leaderboard () {
 
+void saveScore(string name, float score) {
+    ofstream scoreFile("scores");
+    scoreFile << name << " " << score << endl;
+    scoreFile.close();
+}
+
+void printLeaderboard() {
+
+}
+
+int main() {
+    while (true) {
+        float score = 0;
+        string name;
+        cout << "input name\n";
+        cin >> name;
+        cout << "input score\n";
+        cin >> score;
+        saveScore(name, score);
+    }
 }
