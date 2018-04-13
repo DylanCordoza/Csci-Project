@@ -8,6 +8,21 @@ class Room{
         r5 =
     public:
         string riddle(int level){
-
+            if(level == 1){
+                cout << r1;
+            }
+            else if(level == 2){
+                cout << r2;
+            }
+            else if(level == 3){
+                cout << r3;
+            }
+            else if(level == 4){
+                cout << r4;
+            }
+            else if(level == 5){
+                cout << r5;
+            }
         }
 };
+
