@@ -1,30 +1,21 @@
 //hash.h
+#pragma once
 #include <iostream>
 #include <string>
 #include <cctype>
 #include <array>
 using namespace std;
 
-class Node {
+struct Node {
     Node *next = nullptr;
     Node *prev = nullptr;
     string item;
     int amount = 0;
-    public:
     Node(Node *new_next = nullptr, Node *new_prev = nullptr, string new_item, int new_amount = 0) {
         next = new_next;
         prev = new_prev;
         item = new_item;
         amount = new_amount;
-    }
-    void set_next(Node *new_next) { next = new_next; }
-    void set_prev(Node *new_prev) { prev = new_prev; }
-    void set_item(string new_item) { item = new_item; }
-    void set_amount(int new_amount) { amount = new_amount; }
-    Node *get_next() const { return next; }
-    Node *get_prev() const { return prev; }
-    string get_item() const { return item; }
-    int get_amount() const { return amount; }
     bool operator<(const Node &rhs)
         return item < rhs.item;
 };
@@ -51,9 +42,11 @@ class Hash {
 
 //hash.cc
 #include "hash.h"
+#include <iomanip>
+#include <sstream>
 using namespace std;
 
-List::void insert(string item) {
+void List::insert(string item) {
     Node new_node = new Node{nullptr, nullptr, item};
     if (size == 0) {
         head = new_node;
@@ -106,29 +99,70 @@ List::void insert(string item) {
     }
 }
 
-List::void remove(string item) {
-
+void List::remove(string item) {
+    if (size == 0 || item < head.item || item > tail.item) return;
+    Node *temp = head;
+    while (temp) {
+        if (item < temp.item) return;
+        else if (temp.item == item) {
+            if (temp->amount == 1) {
+                if (size == 1) {
+                    head = nullptr;
+                    tail = nullptr;
+                }
+                else if (temp == head) {
+                    head = temp->next;
+                    head->prev = nullptr;
+                }
+                else if (temp == tail) {
+                    tail = temp->prev;
+                    tail->next = nullptr;
+                }
+                else {
+                    temp->prev->next = temp->next;
+                    temp->next->prev = temp->prev;
+                }
+            }
+            temp->amount--;
+            if (temp->amount == 0) {
+                delete temp;
+                size--;
+            }
+            return;
+        }
+        temp = temp->next;
+    }
 }
 
-List::string print_list() const {
-
+string List::print_list() const {
+    Node *temp = head;
+    ostringstream ss;
+    if (!temp) {
+        ss << "No items available.\n";
+        return ss.str();
+    }
+    while (temp) {
+        ss << temp->amount << " " << temp->item << endl;
+        temp = temp->next;
+    }
+    return ss.str();
 }
 
-Hash::void add(string item) {
+void Hash::add(string item) {
     char letter = item.at(0);
     toupper(letter);
     int index = (letter - 65) % 26;
     table[index].insert(item);
 }
 
-Hash::void use(string item) {
+void Hash::use(string item) {
     char letter = item.at(0);
     toupper(letter);
     int index = (letter - 65) % 26;
     table[index].remove(item);
 }
 
-Hash::void print() const {
+void Hash::print() const {
     for(List l : table)
         cout << l.print_list();
 }
