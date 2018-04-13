@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void error() {
+	cout << "Invalid input, please try again\n\n";
+}
+
+void gOver() {
+	cout << "~GAME OVER~\n\n";
+	exit(0);
+}
+
+
+int main(){
+	cout << "As you enter the first floor of the Tower of Legend, the wooden door you entered through slams shut behind you.\nThe room itself is entirely made out of stone.\nThe room is entirely dark with the exception of a couple of torches.\nFrom the shadows emerges a giant ogre wearing high waisted pants, a button down shirt with a pocket protector, and a pair of gazelle glasses.\nHe is also weilding a massive club.\n\n";
+	cout << "'I am the Ognerd.\n My intellect surpasses every race there is.\n Pass my riddle and I will let you continue to the next floor.\n Fail, and perish.'\n";
+	cout << "'Here is my riddle:\n        Tall I am young, short I am old. While with life I glow, wind is my foe.\n'What am I?'\n\n";
+
+	cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
+	string x;
+	cin >> x;
+
+	if (x == "candle" || x == "Candle") {
+		cout << "'That is correct.\n You may proceed.'\nThe Ognerd steps aside and a door opens behind him.\nHe fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
+	} else {
+		cout << "'That is incorrect, prepare to die'\nThe Ognerd swings his club down on you, smashing you into a pulp.\n";
+		gOver();
+	}
+
+
+	}
+}
