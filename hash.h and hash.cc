@@ -39,13 +39,71 @@ class List {
     string print_list() const;
 };
 
+class Hash {
+    List table[50];
+    public:
+    void add(string item);
+    string use(string item);
+    void print() const;
+};
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 //hash.cc
 #include "hash.h"
 using namespace std;
 
 List::void insert(string item) {
-
+    Node new_node = new Node{nullptr, nullptr, item};
+    if (size == 0) {
+        head = new_node;
+        tail = new_node;
+    }
+    else if (size == 1) {
+        Node *temp = head;
+        if (temp->item == item) {
+            delete new_node;
+            temp->amount++;
+        }
+        else if (new_node < temp) {
+            head = new_node;
+            head->set_next(temp);
+        }
+        else {
+            tail = new_node;
+            tail->set_prev(temp);
+        }
+    }
+    else {
+        Node *temp = head;
+        while (temp) {
+            if (temp->item == item) {
+                delete new_node;
+                temp->amount++;
+                break;
+            }
+            else if (new_node < head) {
+                head->prev = new_node;
+                new_node->next = head;
+                head = new_node;
+                break;
+            }
+            else if (tail < new_node) {
+                tail->next = new_node;
+                new_node->prev = tail;
+                tail = new_node;
+                break;
+            }
+            else if (new_node < temp) {
+                new_node->next = temp;
+                new_node->prev = temp->prev;
+                temp->prev->next = new_node;
+                temp->prev = new_node;
+                break;
+            }
+                temp = temp->next;
+        }
+    }
 }
 
 List::void remove(string item) {
@@ -64,18 +122,13 @@ Hash::void add(string item) {
 }
 
 Hash::void use(string item) {
-
+    char letter = item.at(0);
+    toupper(letter);
+    int index = (letter - 65) % 26;
+    table[index].remove(item);
 }
 
 Hash::void print() const {
     for(List l : table)
         cout << l.print_list();
 }
-
-class Hash {
-    List table[50];
-    public:
-    void add(string item);
-    string use(string item);
-    void print() const;
-};
