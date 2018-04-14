@@ -1,33 +1,125 @@
 #include <iostream>
 #include <cstdlib>
+#include <unistd.h>
+#include <string>
 using namespace std;
 
+class Tower {
+  public:
+    string answer1 = "";
+    string answer2 = "";
+    string r1 = "I shine bright,\nThrough the cone over my light.\nOn your nightstand,\nI stand.\nWhat am I?\n";
+    string r2 = "I give sight to those that cannot see,\nAnd on their face is where I like to be.\nWhat am I?\n";
+    string r3 = "I have panels like windows, through which you can see stories\nOf heroes and gods; past and present glories.\nWhat am I?\n";
+    string r4 = "My whispers touch all 5 senses.\nWhen I am near, a tremor commences.\nThat is, if I am good and the vessel is empty.\nIf it is full or displeased, then I am not so healthy.\nWhat am I?";
+    string r5 = "I hold many keys, and yet, I am not a ring.\nA combination of them unlock everything.\nWhat am I?\n";
+
+    void riddle(int level) {
+        if (level == 1) {
+            cout << r1;
+            answer1 = "LAMP";
+            answer2 = "A LAMP";
+        } else if (level == 2) {
+            cout << r2;
+            answer1 = "GLASSES";
+            answer2 = answer1;
+        } else if (level == 3) {
+            cout << r3;
+            answer1 = "COMIC BOOK";
+            answer2 = "COMICS";
+        } else if (level == 4) {
+            cout << r4;
+            answer1 = "FOOD";
+            answer2 = answer1;
+        } else if (level == 5) {
+            cout << r5;
+            answer1 = "KEYBOARD";
+            answer2 = answer1;
+        }
+    }
+};
+
+
 void error() {
-	cout << "Invalid input, please try again\n\n";
+    cout << "Invalid input, please try again\n\n";
 }
 
-void gOver() {
-	cout << "~GAME OVER~\n\n";
-	exit(0);
+void die() {
+    cout << "~GAME OVER~\n\n";
+    exit(0);
 }
 
+void correct(string y) {
+    char c;
+    for (int i = 0; i < y.size(); i++) {
+        c = y.at(i);
+        if (!isupper(c)) {
+            c = isupper(c);
+        }
+        if (!isalpha(c)) {
+            error();
+        }
+    }
+}
 
-int main(){
-	cout << "As you enter the first floor of the Tower of Legend, the wooden door you entered through slams shut behind you.\nThe room itself is entirely made out of stone.\nThe room is entirely dark with the exception of a couple of torches.\nFrom the shadows emerges a giant ogre wearing high waisted pants, a button down shirt with a pocket protector, and a pair of gazelle glasses.\nHe is also weilding a massive club.\n\n";
-	cout << "'I am the Ognerd.\n My intellect surpasses every race there is.\n Pass my riddle and I will let you continue to the next floor.\n Fail, and perish.'\n";
-	cout << "'Here is my riddle:\n        Tall I am young, short I am old. While with life I glow, wind is my foe.\n'What am I?'\n\n";
+void answertime(string z) {
+    cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
+    while (true) {
+        cin >> z;
+        if (!cin) {
+            error();
+        } else {
+            break;
+        }
+    }
+    correct(z);
+}
 
-	cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
-	string x;
-	cin >> x;
+void wait() {
+    while (true) {
+        string s = "*";
+        cout << s;
+        usleep(1000000);
+        cout << string(s.length(), '\b');
+        usleep(1000000);
+    }
+}
 
-	if (x == "candle" || x == "Candle") {
-		cout << "'That is correct.\n You may proceed.'\nThe Ognerd steps aside and a door opens behind him.\nHe fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
-	} else {
-		cout << "'That is incorrect, prepare to die'\nThe Ognerd swings his club down on you, smashing you into a pulp.\n";
-		gOver();
-	}
+int main() {
+    Tower Legend;
+    int t = 500000;
+    int life = 3;
+    string x;
+    cout << "As you enter the first floor of the Tower of Legend, the wooden door you entered through slams shut behind you.\n";
+    usleep(t);
+    cout << "The room itself is entirely made out of stone.\n";
+    usleep(t);
+    cout << "It is overwhelmingly dark, with the exception of a couple of torches.\n";
+    //wait();
+    usleep(t * 5);
+    cout << "From the shadows emerges a giant ogre wearing high waisted pants, a button down shirt with a pocket protector, and a pair of gazelle glasses.\n";
+    usleep(t);
+    cout << "He is also wielding a massive club.\n\n";
+    usleep(t);
+    cout << "'I am the Ognerd.\n My intellect surpasses every race there is.\n Pass my riddle and I will let you continue to the next floor.\n Fail, and perish.'\n\n";
+    cout << "'Here is my riddle:\n\n";
+    usleep(t);
+    Legend.riddle(1);
+
+    answertime(x);
+    cout << "This is X: " << x << endl;
+    if (x == Legend.answer1 || x == Legend.answer2) {
+        cout << "'That is correct.\n You may proceed.'\n";
+        usleep(t);
+        cout << "The Ognerd steps aside, and a door opens behind him.\n";
+        usleep(t);
+        cout << "He fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
+    } else {
+        cout << "'That is incorrect, prepare to die'\n";
+        usleep(t);
+        cout << "The Ognerd swings his club down on you, smashing you into a pulp.\n";
+        die();
+    }
 
 
-	}
 }
