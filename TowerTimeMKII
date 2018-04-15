@@ -51,17 +51,16 @@ void die() {
 
 string correct(string &y) {
     char c;
+    cout << "Y Size: " << y.size() << endl;
     for (int i = 0; i < y.size(); i++) {
         c = y.at(i);
-        cout << c << endl;
         if (!isupper(c)) {
             c = toupper(c);
             y.at(i) = c;
-            cout << c << endl;
         }
     }
     cout << endl;
-    cout << "This is Y: " << y << endl;
+    cout << "Y: " << y << endl;
     return y;
 }
 
@@ -70,7 +69,7 @@ string answertime(int z, Tower Legend) {
     cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
     string x;
     while (true) {
-        cin >> x;
+        getline(cin, x);
         if (!cin) {
             error();
         } else {
@@ -78,7 +77,7 @@ string answertime(int z, Tower Legend) {
         }
     }
     correct(x);
-    cout << "This is X: " << x << endl;
+    cout << "X: " << x << endl;
     if (z == 1) {
         if (x == Legend.answer1 || x == Legend.answer2) {
             cout << "'That is correct.\n You may proceed.'\n";
@@ -130,13 +129,28 @@ int main() {
     cout << "He is also wielding a massive club.\n\n";
     usleep(t);
     cout << "'I am the Ognerd.\n My intellect surpasses every race there is.\n Pass my riddle and I will let you continue to the next floor.\n Fail, and perish.'\n\n";
-    cout << "'Here is my riddle:\n\n";
     usleep(t);
+    cout << "'Here is my riddle:\n\n";
+    usleep(t * 3);
     Legend.riddle(1);
 
     answertime(1, Legend);
+
+    cout << "As you enter the second floor of the Tower of Legend, the stone door you entered through slams shut behind you.\n";
+    usleep(t);
+    cout << "The room itself is entirely made of a bunch of different brands of candy.\n";
+    usleep(t);
+    cout << "It is as dark as the room prior, but this time the light comes from floating candles and a Jack-o-lantern smiling from the center.\n";
+    usleep(t * 5);
+    cout << "Behind the Jack-o-lantern, a trapdoor opens.\n";
+    usleep(t);
+    cout << "Two big bear claws grasp the sides, trying unsuccessfully to pull up their owner.\n";
+    usleep(t);
+    cout << "";
+
 
 
     cout << "Game still going.\n";
 
 }
+
