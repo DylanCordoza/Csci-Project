@@ -65,9 +65,8 @@ string correct(string &y) {
     return y;
 }
 
-string answertime(int z) {
+string answertime(int z, Tower Legend) {
     int t = 500000;
-    Tower Legend;
     cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
     string x;
     while (true) {
@@ -135,7 +134,7 @@ int main() {
     usleep(t);
     Legend.riddle(1);
 
-    answertime(1);
+    answertime(1, Legend);
 
 
     cout << "Game still going.\n";
