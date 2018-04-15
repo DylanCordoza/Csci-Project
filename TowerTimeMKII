@@ -49,30 +49,60 @@ void die() {
     exit(0);
 }
 
-void correct(string y) {
+string correct(string &y) {
     char c;
     for (int i = 0; i < y.size(); i++) {
         c = y.at(i);
+        cout << c << endl;
         if (!isupper(c)) {
-            c = isupper(c);
-        }
-        if (!isalpha(c)) {
-            error();
+            c = toupper(c);
+            y.at(i) = c;
+            cout << c << endl;
         }
     }
+    cout << endl;
+    cout << "This is Y: " << y << endl;
+    return y;
 }
 
-void answertime(string z) {
+string answertime(int z) {
+    int t = 500000;
+    Tower Legend;
     cout << "(Type your answer below. Single words only, like 'cat' or 'dog')\n";
+    string x;
     while (true) {
-        cin >> z;
+        cin >> x;
         if (!cin) {
             error();
         } else {
             break;
         }
     }
-    correct(z);
+    correct(x);
+    cout << "This is X: " << x << endl;
+    if (z == 1) {
+        if (x == Legend.answer1 || x == Legend.answer2) {
+            cout << "'That is correct.\n You may proceed.'\n";
+            usleep(t);
+            cout << "The Ognerd steps aside, and a door opens behind him.\n";
+            usleep(t);
+            cout << "He fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
+        } else {
+            cout << "'That is incorrect, prepare to die'\n";
+            usleep(t);
+            cout << "The Ognerd swings his club down on you, smashing you into a pulp.\n";
+            die();
+        }
+
+    } else if (z == 2) {
+
+    } else if (z == 3) {
+
+    } else if (z == 4) {
+
+    } else if (z == 5) {
+
+    }
 }
 
 void wait() {
@@ -89,7 +119,6 @@ int main() {
     Tower Legend;
     int t = 500000;
     int life = 3;
-    string x;
     cout << "As you enter the first floor of the Tower of Legend, the wooden door you entered through slams shut behind you.\n";
     usleep(t);
     cout << "The room itself is entirely made out of stone.\n";
@@ -106,20 +135,9 @@ int main() {
     usleep(t);
     Legend.riddle(1);
 
-    answertime(x);
-    cout << "This is X: " << x << endl;
-    if (x == Legend.answer1 || x == Legend.answer2) {
-        cout << "'That is correct.\n You may proceed.'\n";
-        usleep(t);
-        cout << "The Ognerd steps aside, and a door opens behind him.\n";
-        usleep(t);
-        cout << "He fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
-    } else {
-        cout << "'That is incorrect, prepare to die'\n";
-        usleep(t);
-        cout << "The Ognerd swings his club down on you, smashing you into a pulp.\n";
-        die();
-    }
+    answertime(1);
 
+
+    cout << "Game still going.\n";
 
 }
