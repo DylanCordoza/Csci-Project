@@ -1,5 +1,5 @@
 # Csci-Project
-Project Title (pending): Tower Time MK.II
+Project Title: Tower Time MK.II
 
 Credits:
 
