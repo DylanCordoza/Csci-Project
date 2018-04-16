@@ -9,4 +9,4 @@ Aaron - tower rooms/ riddles
 
 Jacob - high scores (integration of heap)
 
-William - inventory (integration of BST) and map queue
+William - inventory (integration of hash table) and map queue
