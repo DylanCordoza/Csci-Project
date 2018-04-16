@@ -8,33 +8,39 @@ class Tower {
   public:
     string answer1 = "";
     string answer2 = "";
+    string answer3 = "";
     string r1 = "I shine bright,\nThrough the cone over my light.\nOn your nightstand,\nI stand.\n\n";
     string r2 = "I give sight to those that cannot see,\nAnd on their face is where I like to be.\n\n";
     string r3 = "I have panels like windows, through which you can see stories\nOf heroes and gods; past and present glories.\n\n";
     string r4 = "My whispers touch all 5 senses.\nWhen I am near, a tremor commences.\nThat is, if I am good and the vessel is empty.\nIf it is full or displeased, then I am not so healthy.\n\n";
-    string r5 = "I hold many keys, and yet, I am not a ring.\nA combination of them can unlock everything.\n\n";
+    string r5 = "I hold many keys, and yet, I am not a ring.\nA combination of them can unlock anything.\n\n";
 
     void riddle(int level) {
         if (level == 1) {
             cout << r1;
             answer1 = "LAMP";
             answer2 = "A LAMP";
+            answer3 = answer1;
         } else if (level == 2) {
             cout << r2;
             answer1 = "GLASSES";
             answer2 = "A PAIR OF GLASSES";
+            answer3 = answer1;
         } else if (level == 3) {
             cout << r3;
             answer1 = "COMIC BOOK";
             answer2 = "COMICS";
+            answer3 = "COMIC";
         } else if (level == 4) {
             cout << r4;
             answer1 = "FOOD";
             answer2 = "CUISINE";
+            answer3 = answer1;
         } else if (level == 5) {
             cout << r5;
             answer1 = "KEYBOARD";
             answer2 = answer1;
+            answer3 = answer1;
         }
     }
 };
@@ -79,11 +85,13 @@ void answertime(int z, Tower Legend) {
     correct(x);
 
 
-    if (x == Legend.answer1 || x == Legend.answer2) {
+    if (x == Legend.answer1 || x == Legend.answer2 || x == Legend.answer3) {
         cout << "'That is correct.\n You may proceed.'\n";
         usleep(t);
         if (z == 1) {
             cout << "The Ognerd steps aside, and a door opens behind him.\n";
+            usleep(t);
+            cout << "He gives you a magic piece of chalk that can draw things in the air and make them come to life.\n";
             usleep(t);
             cout << "He fades back into the shadows he came from as you enter through the doorway and make your way up to the second floor of the tower...\n\n";
         } else if (z == 2) {
@@ -91,15 +99,19 @@ void answertime(int z, Tower Legend) {
             usleep(t);
             cout << "In the commotion, candy is shaken off the far wall. A doorway is revealed.\n";
             usleep(t);
+            cout << "In the remains of the smashed Jack-o-lantern, there is an Ghost Gem! You pick it up.\n";
+            usleep(t);
             cout << "You enter through the doorway and make your way up to the third floor of the tower...\n\n";
         } else if (z == 3) {
             cout << "The Playing Mantis brings the violin to his chin.\n";
             usleep(t);
-            cout << "'Tell the puppet I said hello.'\n";
+            cout << "'Tell the puppet I said hello. And tkae this.'\n";
+            usleep(t);
+            cout << "A music sheet flies into your hands.\n";
             usleep(t);
             cout << "The Playing Mantis plays a short tune, and a doorway opens behind him. You walk through it and make your way up to the fourth floor of the tower...\n\n";
         } else if (z == 4) {
-            cout << "'Congratulations! There is no way you could've known that! You cheated! And you know what happens to cheaters?'\n";
+            cout << "'Haha, just kidding! There is no way you could've known that! You cheated! And you know what happens to cheaters?'\n";
             usleep(t);
             cout << "Puppet Bro crumples to the ground, his strings slowly falling from the ceiling.\n";
             usleep(t);
@@ -111,23 +123,36 @@ void answertime(int z, Tower Legend) {
             usleep(t);
             cout << "You can hear something slam into the other side with a loud thud.\n";
             usleep(t);
-            cout << "After catching your breath, you make your way up to the fifth floor of the tower...\n\n";
+            cout << "After catching your breath, you notice you still have some strong spiderweb still attached to you.\n";
+            usleep(t);
+            cout << "You roll it into a bundle and put it in your pouch, then make your way up to the fifth floor of the tower...\n\n";
         } else if (z == 5) {
-
+            cout << "'Ayyy! Good job! Here is your prize.\n";
+            usleep(t);
+            cout << "Mark Zuckerberg hands you a book.\n";
+            usleep(t);
+            cout << "'That book contains every face in the Land of Ooo! Use it wisely.\n";
+            usleep(t);
+            cout << "'Okay, off you go!'\n\n\n";
+            usleep(t);
+            cout << "~~YOU WIN!~~ woo\n";
         }
     } else {
         cout << "'That is incorrect, prepare to die'\n";
         usleep(t);
         if (z == 1) {
             cout << "The Ognerd swings his club down on you, smashing you into a pulp.\n";
+            usleep(t);
             die();
         } else if (z == 2) {
             cout << "Boo Bear backhands your face with his paw, breaking your neck before your crumpled body even hits the wall.\n";
+            usleep(t);
             die();
         } else if (z == 3) {
             cout << "The Playing Mantis moves before you can even blink, striking your neck with his spiked arm and decapitating you in one swift motion.\n";
             usleep(t);
             cout << "He enjoys the charitable snack.\n";
+            usleep(t);
             die();
         } else if (z == 4) {
             cout << "Puppet Bro crumples to the ground, his strings slowly falling from the ceiling.\n";
@@ -139,24 +164,23 @@ void answertime(int z, Tower Legend) {
             cout << "Mandibles dig into you, and you can do nothing but watch in horror as the blood is drained from you and your skin turns wooden.\n";
             usleep(t);
             cout << "The world goes black.\n";
+            usleep(t);
             die();
         } else if (z == 5) {
-
+            cout << "'Aw, that's a shame...Oh well.\n";
+            usleep(t);
+            cout << "'Don't worry, I'm not gonna kill you. You've come far enough to earn at least your life.\n";
+            usleep(t);
+            cout << "'But I am going to teleport you back to the front door. You can try again, or maybe save a candy princess or something. I don't know, whatever you kids do nowadays.'\n";
+            usleep(t);
+            cout << "You feel a tingling sensation, and a bright light overtakes you. Next thing you know, you're back at the front door.\n";
+            usleep(t);
+            die();
         }
     }
 }
 
-void wait() {
-    while (true) {
-        string s = "*";
-        cout << s;
-        usleep(1000000);
-        cout << string(s.length(), '\b');
-        usleep(1000000);
-    }
-}
-
-void what(){
+void what() {
     usleep(3000000);
     cout << "What am I?'\n\n";
     usleep(3000000);
@@ -164,15 +188,14 @@ void what(){
 
 int main() {
     Tower Legend;
-    int t = 500000;
+    int t = 900000;
     int life = 3;
     cout << "As you enter the first floor of the Tower of Legend, the wooden door you entered through slams shut behind you.\n";
     usleep(t);
     cout << "The room itself is entirely made out of stone.\n";
     usleep(t);
     cout << "It is overwhelmingly dark, with the exception of a couple of torches.\n";
-    //wait();
-    usleep(t * 5);
+    usleep(t);
     cout << "From the shadows emerges a giant ogre wearing high waisted pants, a button down shirt with a pocket protector, and a pair of gazelle glasses.\n";
     usleep(t);
     cout << "He is also wielding a massive club.\n\n";
@@ -192,13 +215,13 @@ int main() {
     cout << "The room is made entirely of a bunch of different brands of wrapped candy.\n";
     usleep(t);
     cout << "It is as dark as the room prior, but this time the light comes from floating candles and a Jack-o-lantern smiling from the center.\n";
-    usleep(t * 5);
+    usleep(t);
     cout << "Behind the Jack-o-lantern, a trapdoor opens.\n";
     usleep(t);
     cout << "Two big bear claws grasp the sides, trying unsuccessfully to pull up their owner.\n";
     usleep(t * 5);
     cout << "'Erff'\n";
-    usleep(t);
+    usleep(t * 3);
     cout << "You go over to the trapdoor, and offer your hand. One of the claws grabs it, almost yanking you down, but you dig in your heels and manage to pull up the beast.\n";
     usleep(t);
     cout << "Standing before you is a massive grizzly bear, wearing a bedsheet far too small for it over its upper body. Two eyeholes are cut into the bedsheet.\n";
@@ -213,16 +236,16 @@ int main() {
     usleep(t);
     cout << "'Just because I am spooky doesn't mean I can't be classy.'\n";
     usleep(t);
-    cout << "You shrug in acceptance.";
+    cout << "You shrug in acceptance.\n";
     usleep(t);
     cout << "'I have for you a riddle! Answer it, and you may pass!\n";
     usleep(t);
     cout << "'Fail, and I shall suck out your soul.'\n";
     usleep(t);
     cout << "'You take an involuntary step back.\n";
-    usleep(t);
+    usleep(t * 3);
     cout << "'Haha! I'm just kidding. I'll probably just maul you or something. Bear stuff, you know?'\n";
-    usleep(t * 5);
+    usleep(t * 2);
     cout << "'Here is my riddle:\n\n";
     usleep(t * 3);
 
@@ -262,7 +285,7 @@ int main() {
     cout << "'Ahem.'\n";
     usleep(t);
     cout << "'Okay, here is my riddle:\n\n";
-    usleep(t);
+    usleep(t * 3);
 
     Legend.riddle(3);
     what();
@@ -322,7 +345,7 @@ int main() {
     cout << "You pick yourself up, and look at the puppet in horror.\n";
     usleep(t);
     cout << "'Here is my riddle! It goes like this:\n\n";
-    usleep(t);
+    usleep(t * 3);
 
     Legend.riddle(4);
     what();
@@ -374,5 +397,18 @@ int main() {
     cout << "'Oh! Where are my manners? You still don't know my name!'\n";
     usleep(t);
     cout << "The lizard reaches out his hand. 'I'm Mark Zuckerbeg. Nice to meet you!' he says as you shake it.\n";
+    usleep(t);
+    cout << "Mark Zuckerberg sits down on a comfy chair next to the sofa.\n";
+    usleep(t);
+    cout << "'I guess you're here for your riddle, aren't you?'";
+    usleep(t);
+    cout << "You nod your head.\n";
+    usleep(t);
+    cout << "'Very well. Good luck! Here is your riddle:\n\n";
+    usleep(t * 3);
 
+    Legend.riddle(5);
+    what();
+
+    answertime(5, Legend);
 }
