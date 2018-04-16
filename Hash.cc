@@ -5,7 +5,7 @@
 using namespace std;
 
 void List::insert(string item) {
-    Node new_node = new Node{nullptr, nullptr, item};
+    Node *new_node = new Node{nullptr, nullptr, item, 1};
     if (size == 0) {
         head = new_node;
         tail = new_node;
@@ -18,11 +18,11 @@ void List::insert(string item) {
         }
         else if (new_node < temp) { //Insert before the one element
             head = new_node;
-            head->set_next(temp);
+            head->next = temp;
         }
         else { //Insert after the one element
             tail = new_node;
-            tail->set_prev(temp);
+            tail->prev =temp;
         }
     }
     else { //More than one element in the list
@@ -52,18 +52,18 @@ void List::insert(string item) {
                 temp->prev = new_node;
                 break;
             }
-                temp = temp->next; //Otherwise, move to the next node
+            temp = temp->next; //Otherwise, move to the next node
         }
     }
 }
 
 void List::remove(string item) {
     //Return if the list is empty, or the item would be before the head or after the tail
-    if (size == 0 || item < head.item || item > tail.item) return;
+    if (size == 0 || item < head->item || item > tail->item) return;
     Node *temp = head;
     while (temp) {
-        if (item < temp.item) return; //Return if the item belongs before the current node
-        else if (temp.item == item) { //If there is a match...
+        if (item < temp->item) return; //Return if the item belongs before the current node
+        else if (temp->item == item) { //If there is a match...
             if (temp->amount == 1) { //If there is only one...
                 if (size == 1) { //If it is the only item...
                     head = nullptr;
